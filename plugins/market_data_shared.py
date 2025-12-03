@@ -149,7 +149,7 @@ def upsert_index_yahoo_minutely_into_table(
     hist = yf.Ticker(ticker).history(
         period=period,
         interval=interval,
-        auto_adjust=False,
+        auto_adjust=True,
     )
     if hist.empty:
         print(f"[{ticker}] no data from Yahoo (period={period} interval={interval})")

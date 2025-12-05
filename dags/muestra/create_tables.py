@@ -59,13 +59,12 @@ default_args = {
 }
 
 with DAG(
-    dag_id="07_03_muestra_schema_setup",
+    dag_id="muestra_create",
     start_date=datetime(2025, 11, 10),
     schedule=None,              # run manually once
     catchup=False,
     default_args=default_args,
     dagrun_timeout=timedelta(minutes=5),
-    tags=["muestra", "schema"],
     description=__doc__,  
 ) as dag:
 

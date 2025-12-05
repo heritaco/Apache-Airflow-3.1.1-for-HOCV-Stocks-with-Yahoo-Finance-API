@@ -13,8 +13,8 @@ from airflow.providers.standard.operators.python import PythonOperator
 
 from plugins.market_data_shared import INDEXES, upsert_index_yahoo_minutely_into_table
 
-PERIOD = "7d"      # how far back to fetch data from Yahoo
-INTERVAL = "1m"    # data interval
+PERIOD = "max"      # how far back to fetch data from Yahoo
+INTERVAL = "1d"    # data interval
 # https://ranaroussi.github.io/yfinance/reference/api/yfinance.download.html
 
 default_args = {
@@ -24,14 +24,13 @@ default_args = {
 }
 
 with DAG(
-    dag_id="06_07_tickerlist_minutely_v2",
+    dag_id="market_data_ingest",
     start_date=datetime(2025, 11, 3, 0, 0),
     schedule="* * * * *",   # every minute
     catchup=False,
     max_active_runs=1,
     dagrun_timeout=timedelta(minutes=2),
     default_args=default_args,
-    tags=["postgres", "market-data", "per-ticker", "1m", "mapped"],
     description=__doc__
 ) as dag:
 

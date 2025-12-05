@@ -1,3 +1,15 @@
+"""
+A module to connect to the 'airflow' PostgreSQL database and fetch data using a provided SQL query.
+
+Usage example:
+    >>> from scripts import actidb
+    >>> QUERY = "SELECT * FROM muestra.nvda nvda ORDER BY nvda.date;"
+    >>> nvda = actidb.fetch(QUERY)
+"""
+
+
+
+
 import psycopg2
 import pandas as pd
 

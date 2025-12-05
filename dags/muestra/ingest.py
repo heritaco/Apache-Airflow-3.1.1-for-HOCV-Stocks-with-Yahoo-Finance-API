@@ -30,19 +30,18 @@ default_args = {
 }
 
 with DAG(
-    dag_id="07_04_muestra_ingest_new_files_v3",
+    dag_id="muestra_ingest",
     start_date=datetime(2025, 11, 10),
-    schedule="*/5 * * * *",   # every 5 minutes, adjust if you like
+    schedule="*/1 * * * *",   # every 1 minute check for new files
     catchup=False,
     max_active_runs=1,
     dagrun_timeout=timedelta(minutes=20),
     default_args=default_args,
-    tags=["muestra", "excel", "file-driven"],
     description=__doc__,
 ) as dag:
 
     scan_and_ingest = PythonOperator(
-        task_id="scan_and_ingest_new_files",
+        task_id="scan_and_ingest",
         python_callable=scan_and_ingest_new_files,
         op_kwargs={
             "data_dir": "/opt/airflow/data/muestra",

@@ -19,14 +19,13 @@ default_args = {
 }
 
 with DAG(
-    dag_id="06_07_tickerlist_create_tables",
+    dag_id="market_data_create",
     start_date=datetime(2025, 11, 3, 0, 0),
     schedule="@once",        # run only once
     catchup=False,
     max_active_runs=1,
     dagrun_timeout=timedelta(minutes=10),
     default_args=default_args,
-    tags=["postgres", "market-data", "setup"],
     description=__doc__
 ) as dag:
 

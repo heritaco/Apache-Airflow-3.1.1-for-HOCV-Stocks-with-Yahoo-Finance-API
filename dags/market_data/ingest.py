@@ -13,7 +13,7 @@ from airflow.providers.standard.operators.python import PythonOperator
 
 from plugins.market_data_shared import INDEXES, upsert_index_yahoo_minutely_into_table
 
-PERIOD = "1y"      # how far back to fetch data from Yahoo
+PERIOD = "max"      # how far back to fetch data from Yahoo
 INTERVAL = "1d"    # data interval
 # https://ranaroussi.github.io/yfinance/reference/api/yfinance.download.html
 # https://aroussi.com/post/python-yahoo-finance

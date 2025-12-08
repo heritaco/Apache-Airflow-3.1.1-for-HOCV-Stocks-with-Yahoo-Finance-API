@@ -11,9 +11,12 @@ def mpl_apply():
     color_fuente = "#222222"
     color_fondo = "#F8F8F8"
 
+    deep_palette = sns.color_palette("deep")
+
     sns.set(
         style="whitegrid",
-        palette="muted",
+        # to palette extend the colors using deep palette from seaborn
+        palette=[color_primario, color_secundario] + deep_palette.as_hex(),
         # Use Century Gothic
         font="Century Gothic",
         font_scale=1.5,

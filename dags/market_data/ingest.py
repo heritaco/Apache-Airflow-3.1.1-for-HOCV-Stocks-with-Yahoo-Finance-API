@@ -27,7 +27,7 @@ default_args = {
 with DAG(
     dag_id="market_data_ingest",
     start_date=datetime(2025, 11, 3, 0, 0),
-    schedule="* * * * *",   # every minute
+    schedule="0 22 * * *",   # every day at 22 UTC
     catchup=False,
     max_active_runs=1,
     dagrun_timeout=timedelta(minutes=2),

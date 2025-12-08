@@ -1,0 +1,10 @@
+# ignore the logs folder
+logs/
+
+# ignore the .log files
+*.log
+
+# ignore the .pyc files
+*.pyc
+
+*.py.log

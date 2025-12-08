@@ -7,14 +7,8 @@ Usage example:
     >>> nvda = actidb.fetch(QUERY)
 """
 
-
-
-
 import psycopg2
 import pandas as pd
-
-
-
 
 def fetch(QUERY):
     hostname = 'localhost'

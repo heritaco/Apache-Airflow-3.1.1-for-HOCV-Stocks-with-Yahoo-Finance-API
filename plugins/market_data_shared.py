@@ -138,7 +138,7 @@ def upsert_index_yahoo_minutely_into_table(
     ticker: str,
     name: str,
     source: str = "yahoo",
-    period: str = "1d",         
+    period: str = "1d",           # small window; we fill only missing minutes
     interval: str = "1m",
     postgres_conn_id: str = "postgres_default",
     database: str = "airflow",
@@ -149,7 +149,7 @@ def upsert_index_yahoo_minutely_into_table(
     hist = yf.Ticker(ticker).history(
         period=period,
         interval=interval,
-        auto_adjust=True,   
+        auto_adjust=False,
     )
     if hist.empty:
         print(f"[{ticker}] no data from Yahoo (period={period} interval={interval})")
@@ -163,7 +163,6 @@ def upsert_index_yahoo_minutely_into_table(
     hist.index = hist.index.floor("T")
 
     hist = hist.rename_axis("ts").reset_index()
-    hist = hist.rename(columns={"ts": "date"})
 
     hist = hist.rename(columns={
         "Open": "open",
@@ -171,7 +170,7 @@ def upsert_index_yahoo_minutely_into_table(
         "Low":  "low",
         "Close": "close",
         "Volume": "volume",
-    })[["date", "open", "high", "low", "close", "volume"]]
+    })[["ts", "open", "high", "low", "close", "volume"]]
 
     hist["volume"] = hist["volume"].fillna(0).astype("int64")
 

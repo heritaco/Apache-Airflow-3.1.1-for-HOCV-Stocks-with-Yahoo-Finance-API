@@ -1,5 +1,5 @@
 # ignore the logs folder
-logs/
+# logs/
 
 # ignore the .log files
 *.log
@@ -10,5 +10,5 @@ logs/
 # ignore the .py.log files
 *.py.log
 
-# ignore all the __pycache__ folders
-__pycache__/
+# ignore ALL the __pycache__ folders in any subdirectory
+**/__pycache__/

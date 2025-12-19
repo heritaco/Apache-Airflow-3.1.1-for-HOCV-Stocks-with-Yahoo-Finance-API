@@ -121,3 +121,15 @@ LIMIT 10;
 
 ![alt text](image-12.png)
 
+
+# Non-Sequential NN
+
+![alt text](image-13.png)
+
+# Autoencoders
+
+![alt text](image-14.png)
+
+# Ensable
+
+![alt text](image-15.png)
